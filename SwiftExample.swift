@@ -90,7 +90,15 @@ func optionlVariableDemo() {
 }
 
 func stringOperations() {
-    let aString:String = "String Example"
+    var aString:String = "String Example"
+    var firstEleInd, lastEleInd, someIndex: String.Index
+    //Getting First and Last char Index
+    firstEleInd = aString.startIndex
+    lastEleInd = aString.index(before: aString.endIndex)
+    //Getting some index on the basis of first or last char Index
+    someIndex = aString.index(firstEleInd, offsetBy:5)
+    print("Beginning:\(aString[firstEleInd]), Ending:\(aString[lastEleInd])")
+    print("Somewhere 5 steps from beginning: \(aString[someIndex])")
     func traverse(type: String) {
         if type == "char" {
             for char in aString {
@@ -103,13 +111,28 @@ func stringOperations() {
             }
         }
     }
-    var firstEleInd, lastEleInd, someIndex: String.Index
-    firstEleInd = aString.startIndex
-    lastEleInd = aString.index(before: aString.endIndex)
-    someIndex = aString.index(firstEleInd, offsetBy:5)
-    print("Beginning:\(aString[firstEleInd]), Ending:\(aString[lastEleInd])")
-    print("Somewhere 5 steps from beginning: \(aString[someIndex])")
-    traverse(type: "char")
+    func insertAndRemove() {
+        //Insertion
+        aString.insert("!", at: aString.endIndex)
+        aString.insert(contentsOf: "Welcome ", at: firstEleInd)
+        print(aString)
+        //Removal
+        aString.remove(at: aString.index(before: aString.endIndex))
+        aString.removeSubrange(firstEleInd...aString.index(firstEleInd, offsetBy: 7))
+        print(aString)
+        //Index finding
+        let indexOf:String.Index = aString.firstIndex(of: " ") ?? aString.startIndex
+        aString.insert(contentsOf: "Space", at: indexOf)
+        // Use range for getting a substring
+        print(aString)
+        var aSubString = aString[firstEleInd...lastEleInd]
+        print(aSubString)
+        aSubString.remove(at: lastEleInd)
+        print("Original string now is \(aString) and Substring \(aSubString)")
+//        print(aString[aString.index(lastEleInd, offsetBy: -1)])
+    }
+    insertAndRemove()
+//    traverse(type: "char")
 }
 
 //typeConversionDemo()
