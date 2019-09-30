@@ -135,6 +135,27 @@ func stringOperations() {
 //    traverse(type: "char")
 }
 
+//Collection (Arrays, Sets and Dictionary)
+
+func arrayOperations() {
+    //Initiliazed an empty array and then add an element to it using append() method
+    var anArray1:[String] = [String]()
+    anArray1.append("FirstArray1")
+    
+    //Initliazed an array with one elment using array literal
+    let anArray2:[String] = ["SecondArray2"]
+    let appendedArray = anArray1 + anArray2
+    
+    //someArray.count property is used to get the length or count of items in an array
+    print("The Array has \(appendedArray.count) elements")
+    
+    //someArray.enumerated() gives an iterator with tuple consiting of (index, value)
+    for (index, item) in appendedArray.enumerated() {
+        print("Element at index \(index) is \(item)")
+    }
+}
+
+arrayOperations()
 //typeConversionDemo()
 //let (Name, number, array) = tupleExample()
 //optionlVariableDemo()
@@ -145,5 +166,4 @@ func stringOperations() {
 //evaluateMarks(Marks)
 //let stringArray = printExamStatements(Marks: Marks)
 //print(stringArray)
-
-stringOperations()
+//stringOperations()
